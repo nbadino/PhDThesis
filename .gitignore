@@ -27,3 +27,15 @@ texput.*
 __pycache__/
 *.pyc
 .DS_Store
+
+# Bundled ClassicThesis template material not used by this thesis
+CHANGES
+COPYING
+LISTOFFILES
+README
+ClassicThesis.tex
+ClassicThesis.tcp
+ClassicThesis.tps
+Chapters/
+Examples/
+gfx/example_*.jpg
