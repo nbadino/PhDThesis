@@ -22,6 +22,8 @@ overfulls.txt
 *.ps
 Tesi_build*
 texput.*
+!pdf/
+!pdf/*.pdf
 
 # Common local clutter
 __pycache__/
