@@ -1,0 +1,29 @@
+# LaTeX build artifacts
+*.aux
+*.bcf
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.lol
+*.lot
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.bbl-SAVE-ERROR
+overfulls.txt
+
+# Generated documents
+*.pdf
+*.dvi
+*.ps
+Tesi_build*
+texput.*
+
+# Common local clutter
+__pycache__/
+*.pyc
+.DS_Store

@@ -1,0 +1,255 @@
+% ****************************************************************************************************
+% PhD Thesis - Unified Document
+% Compiles three chapters from external folders using docmute
+% ****************************************************************************************************
+\RequirePackage{fix-cm}
+\documentclass[ twoside,openright,titlepage=firstiscover,numbers=noenddot,headinclude,%
+  footinclude=true,cleardoublepage=empty,abstract=true,%
+  BCOR=5mm,paper=a4,fontsize=11pt,%
+  american,%
+]{scrreprt}
+
+%********************************************************************
+% Classic Thesis Configuration
+%*******************************************************
+\input{classicthesis-config}
+\renewcommand{\myTitle}{Essays in Spatial Economics\xspace}
+\renewcommand{\myName}{Nicol\`o Badino\xspace}
+\renewcommand{\mySupervisor}{Gabriele Cardullo\xspace}
+
+%********************************************************************
+% Additional packages needed for external chapters
+%*******************************************************
+\usepackage{amsthm}     % For theorem environments
+\usepackage{comment}   % For comment environment
+\usepackage{threeparttable} % Tables used in included papers
+\usepackage{pgfplots}   % Needed for LIA chapter graphs
+\pgfplotsset{compat=1.18}
+\usepackage{mathtools}  % Enhanced math support
+\usepackage[nameinlink,noabbrev]{cleveref} % Better cross-references
+\usepackage{rotating}   % sidewaystable / sidewaysfigure (from paper.sty, skipped by docmute)
+\usepackage{booktabs}   % \toprule, \midrule, \bottomrule (from paper.sty)
+\usepackage{multirow}   % \multirow in tables (from paper.sty)
+
+%********************************************************************
+% Compatibility shims for math.sty and paper.sty
+%*******************************************************
+\newcommand{\bc}[1]{\left\lbrace #1 \right\rbrace}
+\newcommand{\bp}[1]{\left( #1 \right)}
+\newcommand{\bs}[1]{\left[ #1 \right]}
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\newcommand\R{\mathbb{R}}
+\newcommand\E{\mathbb{E}}
+\renewcommand\P{\mathbb{P}}
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\available}[1]{}
+\providecommand{\note}[2][]{{\par\footnotesize\textit{#1:} #2\par}}
+
+%********************************************************************
+% DOCMUTE - Ignores preambles in included files
+%*******************************************************
+\usepackage{docmute}
+
+%********************************************************************
+% Theorem environments (needed because docmute skips preamble)
+%*******************************************************
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{prop}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{assumption}[theorem]{Assumption}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{derivation}{Derivation}
+
+
+% Custom note environment - REMOVED TO AVOID CONFLICT WITH PAPERS' \note COMMAND
+%\newenvironment{note}{
+%\begin{quote}\itshape\small}{
+%\end{quote}}
+\newlength{\coverxshift}
+\setlength{\coverxshift}{27mm}
+
+% Compatibility fallback: some included papers use \Cref without loading cleveref.
+\providecommand{\Cref}[1]{\autoref{#1}}
+% Compatibility fallback: some included papers use \euro.
+\providecommand{\euro}{\texteuro}
+% Compatibility fallback: papers may use the legacy subfigure environment.
+\newenvironment{subfigure}[2][]{
+\begin{minipage}[#1]{#2}}{
+\end{minipage}}
+
+% Include article-style sources as thesis chapters without local titles/bibliographies.
+\makeatletter
+\newcommand{\includepaper}[2]{%
+  \chapter{#1}%
+  \begin{refsection}
+    \begingroup
+    \let\maketitle\relax
+    \let\printbibliography\relax
+    \let\bibliography\@gobble
+    \let\bibliographystyle\@gobble
+    % Keep appendix blocks inside papers, with an explicit appendix title.
+    \renewcommand{\appendix}{%
+      \clearpage
+      \section*{Appendix}%
+      \addcontentsline{toc}{section}{Appendix}%
+      \setcounter{section}{0}%
+      \renewcommand{\thesection}{\Alph{section}}%
+    }
+    % Render paper abstracts in thesis style without standalone title pages.
+    \renewenvironment{abstract}
+    {
+    \section*{Abstract}\noindent\ignorespaces}
+    {\par\medskip}
+    \input{#2}%
+    \endgroup
+    \xdef\currentpaperrefsection{\therefsection}%
+  \end{refsection}
+  \printbibliography[section=\currentpaperrefsection,heading=subbibliography,title={References}]
+}
+\makeatother
+
+%********************************************************************
+% Graphics paths
+%*******************************************************
+\graphicspath{{gfx/}{../Beyond_the_beach/Latex/}{../LIA/teoria_labour_leisure/grafici/}{../LIA/teoria_labour_leisure/latex/}{../Patents/}{../Patents/DATI/model_results/}}
+
+%********************************************************************
+% Input paths for \input commands in external chapters
+%*******************************************************
+\makeatletter
+\def\input@path{{../Beyond_the_beach/Latex/}{../LIA/teoria_labour_leisure/latex/}{../Patents/}}
+\makeatother
+
+%********************************************************************
+% Bibliographies
+%*******************************************************
+\addbibresource{Bibliography.bib}
+\addbibresource{AMiede_Publications.bib}
+\addbibresource{../Beyond_the_beach/Latex/bibliography.bib}
+\addbibresource{../LIA/teoria_labour_leisure/latex/references.bib}
+\addbibresource{../LIA/teoria_labour_leisure/latex/LIA.bib}
+\addbibresource{../Patents/bibliography.bib}
+
+%********************************************************************
+% Hyphenation
+%*******************************************************
+\hyphenation{Ros-si-Hans-berg}
+
+% ********************************************************************
+% GO!GO!GO! MOVE IT!
+%*******************************************************
+\begin{document}
+\frenchspacing
+\raggedbottom
+\selectlanguage{american}
+\pagenumbering{roman}
+\pagestyle{plain}
+
+%********************************************************************
+% Frontmatter
+%*******************************************************
+\begin{titlepage}
+  \thispagestyle{empty}
+  \begin{center}
+    \hspace*{\coverxshift}%
+    \begin{minipage}{\dimexpr\textwidth-\coverxshift\relax}
+      \centering
+      \vspace*{1.0cm}
+      \includegraphics[width=0.33\textwidth]{logo_verticale_BLACK.png}\par
+      \vspace{0.8cm}
+      {\Large University of Genova\par}
+      \vspace{0.2cm}
+      {\large PhD Program in Economics and Quantitative Methods\par}
+      \vspace{1.8cm}
+      {\fontsize{26}{30}\selectfont\color{Maroon}\spacedallcaps{\myTitle}\par}
+      \vspace{2.0cm}
+      {\large Author\par}
+      {\Large \myName\par}
+    \end{minipage}
+  \end{center}
+  \vfill
+  \noindent\makebox[0pt][l]{%
+    \hspace*{\dimexpr\textwidth+6mm+\coverxshift\relax}%
+    \llap{%
+      \begin{minipage}{0.40\textwidth}
+        \raggedleft
+        {\normalsize Supervisor\par}
+        {\large \mySupervisor\par}
+      \end{minipage}%
+    }%
+  }\par
+\end{titlepage}
+\cleardoublepage\include{FrontBackmatter/Acknowledgments}
+\pagestyle{scrheadings}
+\cleardoublepage\include{FrontBackmatter/Contents}
+
+%********************************************************************
+% Mainmatter
+%*******************************************************
+\cleardoublepage\pagenumbering{arabic}
+\cleardoublepage
+
+\pdfbookmark[1]{Introduction}{introduction}
+\chapter*{Introduction}
+\markboth{Introduction}{Introduction}
+\addcontentsline{toc}{chapter}{Introduction}
+
+This thesis is the result of two years of work in spatial economics. What emerges immediately is that geography matters.
+
+Economists have long been concerned with the importance of institutions, mechanisms, and incentives, and have only partially studied the geographic component of the economy. Yet spatial economics, although less popular, rests on the work of very important scholars. Among the first is Hotelling, who in 1929 understood that geography is a crucial component of product differentiation, and that prices are a function of sellers' and, I would argue, buyers' locations.
+
+Many other great economists studied these issues over the years, and several revolutions occurred as new mathematical tools and computational advances became available. In the 1990s Paul Krugman, later awarded the Nobel Prize, started the so-called New Economic Geography, studying more closely the forces of agglomeration and dispersion, and going deeper into the impact of trade and regional disparities. More recently, a new branch of the literature has developed with contributions, among others, by Rossi-Hansberg, Redding, Allen, and Arkolakis, combining richer geographical data with more sophisticated methods, made feasible by higher computing power.
+
+My work was profoundly inspired by this latter branch of the literature, in particular after some extremely insightful discussions I had with Marc-Antoine Faure about how geography shapes why some countries, across different ages, succeeded or failed.
+
+This thesis is therefore about three different topics, all connected by a spatial economic setting.
+
+The first chapter is an economic development paper that studies the interaction between geography and climate change in the second millennium AD. The question I pose is whether the well-known divergence in timing and magnitude we observe around the Industrial Revolution is driven by exogenous explanations rather than only by the current hypotheses about institutions, religion, or colonialism. I propose a novel mechanism through which the Little Ice Age---starting in the thirteenth century and ending in the nineteenth---may have had different consequences across European countries depending on their location. While colder countries could have benefited from climatic cooling, creating stronger incentives to develop new techniques to maintain stable agricultural output, warmer countries may have faced weaker incentives to change, keeping them closer to Malthusian stagnation.
+
+The second chapter is an economic history paper that studies the diffusion of the Industrial Revolution across Europe and posits that industrialization---proxied by patent production---may have been facilitated by spatial determinants. I find that patent production in the nineteenth century follows a southeastward direction, and that pre-existing roads, waterways, and orography shaped how regions were exposed to innovation: areas that were better connected to already industrialized regions innovated earlier than more relatively isolated regions.
+
+The final chapter is an industrial organization paper that generalizes the Hotelling model to a two-dimensional setting. The original reason for this exercise was to build a framework suitable for more realistic empirical investigations with geography. Through simulations, my setting is able to generate dispersion, agglomeration, and several other interesting properties.
+
+What I learned in these two years of work is that spatial economics needs to be studied more deeply when we talk about inequality across countries and different development paths. I hope that this thesis has contributed, at least to some extent, to this matter.
+
+\cleardoublepage
+
+%====================================================================
+% PART I: The Climatic Origins of the Agricultural Revolution
+%====================================================================
+\includepaper{Out of the Cold: The Little Ice Age and the Agricultural Revolution}{../LIA/teoria_labour_leisure/latex/main4_revisionato}
+
+%====================================================================
+% PART II: The Spatial Diffusion of the British Industrial Revolution
+%====================================================================
+\cleardoublepage
+\includepaper{The Spatial Diffusion of the British Industrial Revolution}{../Patents/main_rivisto}
+
+%====================================================================
+% PART III: Beyond the Beach - Spatial Competition in Two Dimensions
+%====================================================================
+\cleardoublepage
+\includepaper{Beyond the Beach: Spatial Competition in Two Dimensions}{../Beyond_the_beach/Latex/model_rivisto}
+
+% ********************************************************************
+% Backmatter
+%*******************************************************
+\appendix
+
+%********************************************************************
+% Other Stuff in the Back
+%*******************************************************
+%\cleardoublepage\include{FrontBackmatter/Declaration}
+%\cleardoublepage\include{FrontBackmatter/Colophon}
+
+% ********************************************************************
+% Game Over
+%*******************************************************
+\end{document}
