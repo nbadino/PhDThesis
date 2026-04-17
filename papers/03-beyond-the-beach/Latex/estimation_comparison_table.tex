@@ -1,0 +1,32 @@
+% Structural estimation: Truncated vs Original demand
+\begin{table}[htbp]
+  \centering
+  \caption{Structural Estimation: Truncated vs Original Demand}
+  \label{tab:estimation_truncated}
+  \begin{threeparttable}
+    \begin{tabular}{lcccc}
+      \hline\hline
+      & \multicolumn{2}{c}{Benzina} & \multicolumn{2}{c}{Gasolio} \\
+      & Original & Truncated & Original & Truncated \\
+      \hline
+      \multicolumn{5}{l}{\textit{Estimated Parameters}} \\[2pt]
+      $\hat{\beta}$ & 1.000 & 0.500 & 1.000 & 0.500 \\
+      $\hat{c}$ (\euro/L) & 0.9162 & 0.9162 & 0.8305 & 0.8305 \\
+      \hline
+      \multicolumn{5}{l}{\textit{Model Fit}} \\[2pt]
+      Corr(pred, obs) & 0.005 & 0.044 & 0.077 & 0.020 \\
+      RMSE (\euro/L) & 0.5728 & 0.3732 & 0.5145 & 0.3480 \\
+      Moment distance & 0.6603 & 0.7558 & 0.5396 & 0.6369 \\
+      Corr(price, nn\_dist) obs & -0.095 & -0.095 & 0.008 & 0.008 \\
+      Corr(price, nn\_dist) pred & -0.356 & -0.251 & -0.471 & -0.415 \\
+      \hline
+      Avg markup (\%) & 8.4 & 30.7 & 16.4 & 36.9 \\
+      $N$ (stations) & 500 & 500 & 500 & 500 \\
+      \hline\hline
+    \end{tabular}
+    \begin{tablenotes}
+      \small
+    \item \textit{Notes:} Comparison of truncated demand $q = \max(0, \alpha - \gamma P^*)$ vs original linear demand $q = \alpha - \gamma P^*$. Parameters: $\alpha=2.0, \gamma=1.0, t=0.02$. Grid search over $\beta$ and $c$.
+    \end{tablenotes}
+  \end{threeparttable}
+\end{table}

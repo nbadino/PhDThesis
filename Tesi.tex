@@ -1,6 +1,6 @@
 % ****************************************************************************************************
 % PhD Thesis - Unified Document
-% Compiles three chapters from external folders using docmute
+% Compiles three papers stored inside this repository using docmute
 % ****************************************************************************************************
 \RequirePackage{fix-cm}
 \documentclass[ twoside,openright,titlepage=firstiscover,numbers=noenddot,headinclude,%
@@ -118,13 +118,13 @@
 %********************************************************************
 % Graphics paths
 %*******************************************************
-\graphicspath{{gfx/}{../Beyond_the_beach/Latex/}{../LIA/teoria_labour_leisure/grafici/}{../LIA/teoria_labour_leisure/latex/}{../Patents/}{../Patents/DATI/model_results/}}
+\graphicspath{{gfx/}{papers/01-little-ice-age/latex/}{papers/02-industrial-diffusion/}{papers/03-beyond-the-beach/Latex/}}
 
 %********************************************************************
-% Input paths for \input commands in external chapters
+% Input paths for article sources bundled in this repository
 %*******************************************************
 \makeatletter
-\def\input@path{{../Beyond_the_beach/Latex/}{../LIA/teoria_labour_leisure/latex/}{../Patents/}}
+\def\input@path{{papers/01-little-ice-age/latex/}{papers/02-industrial-diffusion/}{papers/03-beyond-the-beach/Latex/}}
 \makeatother
 
 %********************************************************************
@@ -132,10 +132,10 @@
 %*******************************************************
 \addbibresource{Bibliography.bib}
 \addbibresource{AMiede_Publications.bib}
-\addbibresource{../Beyond_the_beach/Latex/bibliography.bib}
-\addbibresource{../LIA/teoria_labour_leisure/latex/references.bib}
-\addbibresource{../LIA/teoria_labour_leisure/latex/LIA.bib}
-\addbibresource{../Patents/bibliography.bib}
+\addbibresource{papers/03-beyond-the-beach/Latex/bibliography.bib}
+\addbibresource{papers/01-little-ice-age/latex/references.bib}
+\addbibresource{papers/01-little-ice-age/latex/LIA.bib}
+\addbibresource{papers/02-industrial-diffusion/bibliography.bib}
 
 %********************************************************************
 % Hyphenation
@@ -224,19 +224,19 @@ What I learned in these two years of work is that spatial economics needs to be 
 %====================================================================
 % PART I: The Climatic Origins of the Agricultural Revolution
 %====================================================================
-\includepaper{Out of the Cold: The Little Ice Age and the Agricultural Revolution}{../LIA/teoria_labour_leisure/latex/main4_revisionato}
+\includepaper{Out of the Cold: The Little Ice Age and the Agricultural Revolution}{papers/01-little-ice-age/latex/main4_revisionato}
 
 %====================================================================
 % PART II: The Spatial Diffusion of the British Industrial Revolution
 %====================================================================
 \cleardoublepage
-\includepaper{The Spatial Diffusion of the British Industrial Revolution}{../Patents/main_rivisto}
+\includepaper{The Spatial Diffusion of the British Industrial Revolution}{papers/02-industrial-diffusion/main_rivisto}
 
 %====================================================================
 % PART III: Beyond the Beach - Spatial Competition in Two Dimensions
 %====================================================================
 \cleardoublepage
-\includepaper{Beyond the Beach: Spatial Competition in Two Dimensions}{../Beyond_the_beach/Latex/model_rivisto}
+\includepaper{Beyond the Beach: Spatial Competition in Two Dimensions}{papers/03-beyond-the-beach/Latex/model_rivisto}
 
 % ********************************************************************
 % Backmatter

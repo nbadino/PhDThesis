@@ -1,0 +1,33 @@
+
+\begin{table}
+\begin{center}
+\begin{tabular}{l c c}
+\hline
+ & OLS (log patents) & PPML (patents) \\
+\hline
+Lagged Patent Stock (log)  & $0.84^{***}$ & $0.80^{***}$  \\
+                           & $(0.02)$     & $(0.01)$      \\
+Population (log)           & $0.17^{***}$ & $0.29^{***}$  \\
+                           & $(0.02)$     & $(0.01)$      \\
+Structural spillover index (log) & $0.47^{***}$ & $-0.11^{***}$ \\
+                           & $(0.08)$     & $(0.04)$      \\
+Coal cost (log)            & $0.02$       & $-0.11^{***}$ \\
+                           & $(0.02)$     & $(0.01)$      \\
+\hline
+Num. obs.                  & $1463$       & $1414$        \\
+Num. groups: country\_id   & $35$         & $30$          \\
+Num. groups: year          & $7$          & $7$           \\
+R$^2$ (full model)         & $0.88$       & --            \\
+R$^2$ (proj model)         & $0.71$       & --            \\
+Adj. R$^2$ (full model)    & $0.88$       & --            \\
+Adj. R$^2$ (proj model)    & $0.71$       & --            \\
+Deviance                   & --           & $5437.36$     \\
+Log Likelihood             & --           & $-3925.20$    \\
+Pseudo R$^2$               & --           & $0.93$        \\
+\hline
+\multicolumn{3}{l}{\scriptsize{$^{***}p<0.01$; $^{**}p<0.05$; $^{*}p<0.1$}}
+\end{tabular}
+\caption{Structural Gravity Model (Concentrated Least Squares)}
+\label{tab:structural}
+\end{center}
+\end{table}

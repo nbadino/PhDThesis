@@ -1,0 +1,29 @@
+% Structural estimation results
+\begin{table}[htbp]
+  \centering
+  \caption{Structural Estimation Results: Lombardy Fuel Market}
+  \label{tab:estimation_results}
+  \begin{threeparttable}
+    \begin{tabular}{lccc}
+      \hline\hline
+      & Benzina & Gasolio & Combined \\
+      \hline
+      \multicolumn{4}{l}{\textit{Estimated Parameters}} \\[2pt]
+      $\hat{\beta}$ (choice sensitivity) & 0.100 & 0.100 & 0.100 \\
+      $\hat{c}$ (marginal cost, \euro/L) & 1.0674 & 0.9900 & 0.5470 \\
+      \hline
+      \multicolumn{4}{l}{\textit{Model Fit}} \\[2pt]
+      Correlation & -0.065 & -0.041 & 0.046 \\
+      RMSE (\euro/L) & 0.3359 & 0.3099 & 0.6403 \\
+      Moment distance & 0.2610 & 0.1693 & 0.6745 \\
+      \hline
+      Average markup (\%) & 10.2 & 12.8 & 47.7 \\
+      $N$ (stations) & 2,000 & 2,000 & 2,000 \\
+      \hline\hline
+    \end{tabular}
+    \begin{tablenotes}
+      \small
+    \item \textit{Notes:} Parameters estimated via method of simulated moments with Nash equilibrium computation. Parallel grid search over $\beta \in [0.5, 20]$ and $c \in [0.7p_{min}, 0.98p_{min}]$.
+    \end{tablenotes}
+  \end{threeparttable}
+\end{table}

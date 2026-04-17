@@ -1,0 +1,35 @@
+
+\begin{table}
+\begin{center}
+\begin{tabular}{l c}
+\hline
+ & Model 1 \\
+\hline
+Travel time from London (log) & $-1.603^{***}$ \\
+ & $(0.295)$ \\
+Travel time $\times (\log(t)-\overline{\log(t)})$ & $-3.850^{*}$ \\
+ & $(2.057)$ \\
+Bearing from London (sin) & $5.685^{***}$ \\
+ & $(1.776)$ \\
+Bearing from London (cos) & $-1.838$ \\
+ & $(1.530)$ \\
+Bearing (cos) $\times (\log(t)-\overline{\log(t)})$ & $-15.088$ \\
+ & $(9.744)$ \\
+Population in 1800 (log) & $-0.080$ \\
+ & $(0.164)$ \\
+Coal cost (log) & $-0.577^{***}$ \\
+ & $(0.138)$ \\
+\hline
+AIC              & $829.00$ \\
+R$^2$            & $0.54$ \\
+Max. R$^2$       & $0.98$ \\
+Num. events      & $95$ \\
+Num. obs.        & $249$ \\
+PH test (global) & -- \\
+\hline
+\multicolumn{2}{l}{\scriptsize{$^{***}p<0.01$; $^{**}p<0.05$; $^{*}p<0.1$}}
+\end{tabular}
+\caption{Cox Hazard Model with Time-Varying Effects (annual\_de\_duckdb; selected by PH test)}
+\label{tab:cox_serious_tv_annual_de_duckdb}
+\end{center}
+\end{table}

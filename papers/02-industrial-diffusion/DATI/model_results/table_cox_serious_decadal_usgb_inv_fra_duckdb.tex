@@ -1,0 +1,31 @@
+
+\begin{table}
+\begin{center}
+\begin{tabular}{l c}
+\hline
+ & Model 1 \\
+\hline
+Travel time from London (log) & $-5.551^{***}$ \\
+ & $(0.552)$ \\
+Bearing from London (sin) & $4.497^{***}$ \\
+ & $(0.750)$ \\
+Bearing from London (cos) & $-9.091^{***}$ \\
+ & $(0.870)$ \\
+Population in 1800 (log) & $-0.084$ \\
+ & $(0.138)$ \\
+Coal cost (log) & $-0.013$ \\
+ & $(0.232)$ \\
+\hline
+AIC              & $406.03$ \\
+R$^2$            & $0.69$ \\
+Max. R$^2$       & $0.94$ \\
+Num. events      & $64$ \\
+Num. obs.        & $249$ \\
+PH test (global) & $0.002$ \\
+\hline
+\multicolumn{2}{l}{\scriptsize{$^{***}p<0.01$; $^{**}p<0.05$; $^{*}p<0.1$}}
+\end{tabular}
+\caption{Cox Hazard Model (decadal\_usgb\_inv\_fra\_duckdb; cluster-robust SE by country)}
+\label{tab:cox_serious_decadal_usgb_inv_fra_duckdb}
+\end{center}
+\end{table}
